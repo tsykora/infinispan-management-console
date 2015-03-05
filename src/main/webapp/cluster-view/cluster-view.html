@@ -78,8 +78,10 @@
                         </div>
                     </div>
 
+
+
                     <br>
-                    <span class="slider-text"> Average read time </span> 
+                    <span  class="slider-horizontal" > Average read time </span>
                     <br>
                     <div class="slider-one"></div>
                     <span class="slider-min"> 100 </span>  <span class="slider-max"> 200 </span> 
@@ -107,6 +109,10 @@
 
         <!-- RIGHT COLUMN START -->
         <div class="col-md-10 borders-top-only">
+
+           <div id="slider" slider ng-from="test.from" ng-to="test.to" start=0 end=100 ng-to="test.to" ng-from="test.from"></div>
+           <input type="text" ng-model="test.from"> <input type="text" ng-model="test.to">
+
 
             <!-- RIGHT COLUMN ROW #1 START -->
             <div class="row">

@@ -23,4 +23,18 @@ angular.module('managementConsole')
                     });
                 }
             });
+
+        $("#slider").noUiSlider({
+            start: [0, 100],
+            connect: true,
+            range: {
+                'min': 0,
+                'max': 100
+            }
+        });
+
+        $scope.sliderValueLeft = $("#slider").val()[0];
+        $scope.sliderValueRight = $("#slider").val()[1];
+
+
   }]);
