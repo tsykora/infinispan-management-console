@@ -78,30 +78,38 @@
                         </div>
                     </div>
 
+                   <br>
+                   <input type="button" style="border-radius: 8px" ng-model="filterOutCaches" ng-click="filterOutCaches()"
+                          value="Apply filters">
+                   <br>
 
+                   <br>
+                   <span>Average read time</span>
+                   <div id="slider-average-read-time" ></div>
+                   <div id="slider-average-read-time" ></div>
+                   <input style="border-radius: 8px;" type="text" id="slider-average-read-time-value-lower" size="7">
+                   <input style="border-radius: 8px;" type="text" id="slider-average-read-time-value-upper" size="7">(ms)
 
-                    <br>
-                    <span  class="slider-horizontal" > Average read time </span>
-                    <br>
-                    <div class="slider-one"></div>
-                    <span class="slider-min"> 100 </span>  <span class="slider-max"> 200 </span> 
-                    <br>
-                    <br>
+                   <br>
+                   <br>
+                   <span>Average write time</span>
+                   <div id="slider-average-write-time"></div>
+                   <input style="border-radius: 8px;" type="text" id="slider-average-write-time-value-lower" size="7">
+                   <input style="border-radius: 8px;" type="text" id="slider-average-write-time-value-upper" size="7">(ms)
 
-                    <span class="slider-text"> Average read time </span> 
-                    <br>
-                    <div class="slider-one"></div>
-                    <span class="slider-min"> 100 </span>  <span class="slider-max"> 200 </span> 
-                    <br>
-                    <br>
+                   <br>
+                   <br>
+                   <span>Average remove time</span>
+                   <div id="slider-average-remove-time"></div>
+                   <input style="border-radius: 8px;" type="text" id="slider-average-remove-time-value-lower" size="7">
+                   <input style="border-radius: 8px;" type="text" id="slider-average-remove-time-value-upper" size="7">(ms)
 
-                    <span class="slider-text"> Average read time </span> 
-                    <br>
-                    <div class="slider-one"></div>
-                    <span class="slider-min"> 100 </span>  <span class="slider-max"> 200 </span> 
-                    <br>
-                    <br>
-
+                   <br>
+                   <br>
+                   <span>Average replication time</span>
+                   <div id="slider-average-replication-time"></div>
+                   <input style="border-radius: 8px;" type="text" id="slider-average-replication-time-value-lower" size="7">
+                   <input style="border-radius: 8px;" type="text" id="slider-average-replication-time-value-upper" size="7">(ms)
                 </div>
             </div>
         </div>
@@ -109,10 +117,6 @@
 
         <!-- RIGHT COLUMN START -->
         <div class="col-md-10 borders-top-only">
-
-           <div id="slider" slider ng-from="test.from" ng-to="test.to" start=0 end=100 ng-to="test.to" ng-from="test.from"></div>
-           <input type="text" ng-model="test.from"> <input type="text" ng-model="test.to">
-
 
             <!-- RIGHT COLUMN ROW #1 START -->
             <div class="row">
@@ -144,15 +148,35 @@
                 <div ng-show="shared.currentCollection == 'caches'">
                     <div ng-show="!currentCluster.caches || currentCluster.caches.length === 0">There are no caches to show.</div>
                     <div class="box col-md-2 nopadding" ng-repeat="cache in currentCluster.caches">
-                        <a ui-sref="cacheDetails({clusterName: currentCluster.name, cacheName: cache.name})">
-                            <h4>{{cache.name}}</h4> 
-
+                       <!-- from PR #7 we will have: -->
+                       <!-- prepared api for use: {{currentCluster.getCache(cName).availability}}-->
+                       <a ui-sref="cacheDetails({clusterName: currentCluster.name, cacheName: cache.name})">
+                            <h4>{{cache.name}}</h4>
                             <br>
                         </a>
                     </div>
                 </div>
             </div>
             <!-- RIGHT COLUMN ROW #2 END -->
+
+
+            <div class="row" style="padding-left:15px !important; margin: 0px important!;">
+               <br>
+               Result of applying filter sliders:
+
+               <div ng-show="shared.currentCollection == 'caches'">
+                  <div ng-show="!currentCluster.caches || currentCluster.caches.length === 0">There are no caches to show.</div>
+                     <div class="box col-md-2 nopadding" ng-repeat="cName in filteredCachesNames">
+                        <!-- from PR #7 we will have: -->
+                        <!-- prepared api for use: {{currentCluster.getCache(cName).availability}}-->
+                        <a ui-sref="cacheDetails({clusterName: currentCluster.name, cacheName: cName})">
+                           <h4>{{cName}}</h4>
+                           <br>
+                        </a>
+                     </div>
+               </div>
+            </div>
+            <!-- RIGHT COLUMN ROW #3 END -->
 
         </div>
         <!-- RIGHT COLUMN END -->
