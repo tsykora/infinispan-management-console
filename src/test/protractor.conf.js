@@ -2,11 +2,11 @@
 exports.config = {
   // The address of a running selenium server.
   //seleniumAddress: 'http://localhost:4444/wd/hub',
-  seleniumServerJar: '../../node_modules/protractor/selenium/selenium-server-standalone-2.44.0.jar', // Make use you check the version in the folder
+  seleniumServerJar: '../../node_modules/protractor/selenium/selenium-server-standalone-2.45.0.jar', // Make use you check the version in the folder
 
   // Capabilities to be passed to the webdriver instance.
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'firefox'
   },
 
   // Spec patterns are relative to the current working directly when
